@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://pihrwjmka60b"]
+
+[ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
+[ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
+
+[sub_resource type="Curve3D" id="Curve3D_vvisa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.263565, 0, 0.0833736, 0, 0, 0, 0, 0, 0, 0.032655, 0, -5.03097, 0, 0, 0, 0, 0, 0, 0.0508882, 0, -14.1107, 0, 0, 0, 0, 0, 0, -0.0454791, 0, -24.2853, 0, 0, 0, 0, 0, 0, -0.043727, 0, -38.5418, 0, 0, 0, 0, 0, 0, -0.139807, 0, -58.3342, 0, 0, 0, 0, 0, 0, -0.11133, 0, -80.4771, 0, 0, 0, 0, 0, 0, 0.0287819, 0, -99.1576),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2of45"]
+albedo_color = Color(0.104833, 0.0655813, 1.20327e-08, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jivs5"]
+material = SubResource("StandardMaterial3D_2of45")
+size = Vector2(2, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37wnl"]
+sky_horizon_color = Color(0.535884, 0.660707, 0.859357, 1)
+ground_bottom_color = Color(0.290242, 0.402969, 0.317071, 1)
+
+[sub_resource type="Sky" id="Sky_lhx7d"]
+sky_material = SubResource("ProceduralSkyMaterial_37wnl")
+
+[sub_resource type="Environment" id="Environment_c3ijb"]
+background_mode = 2
+sky = SubResource("Sky_lhx7d")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_jivs5")
+
+[node name="PlayerPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_vvisa")
+
+[node name="PlayerCart" type="PathFollow3D" parent="PlayerPath"]
+transform = Transform3D(0.998324, 0, -0.0578224, 0, 1, 0, 0.0578224, 0, 0.998324, -0.263565, 0, 0.0833736)
+loop = false
+
+[node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18051, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+mesh = SubResource("PlaneMesh_jivs5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c3ijb")
+
+[node name="EnemyHolder" type="Node3D" parent="."]
+
+[node name="Enemy" parent="EnemyHolder" instance=ExtResource("1_2of45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3731)

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh7driskg67n7"]
+
+[ext_resource type="Script" uid="uid://d1p256mu473pd" path="res://Enemy/enemy.gd" id="1_2pb1h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjnqo"]
+albedo_color = Color(0.954652, 0, 0.215001, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2pb1h"]
+material = SubResource("StandardMaterial3D_xjnqo")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2pb1h"]
+viewport_path = NodePath("Node3D/SubViewport")
+
+[node name="Enemy" type="Node3D"]
+script = ExtResource("1_2pb1h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.995661, 0)
+mesh = SubResource("CapsuleMesh_2pb1h")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59577, 3.5191)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="Node3D"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(500, 375)
+render_target_update_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 51
+bbcode_enabled = true
+text = "Here we are"
+fit_content = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+texture = SubResource("ViewportTexture_2pb1h")
