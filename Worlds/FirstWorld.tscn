@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pihrwjmka60b"]
+[gd_scene load_steps=10 format=3 uid="uid://pihrwjmka60b"]
 
 [ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
 [ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
@@ -9,6 +9,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jivs5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2of45"]
 albedo_color = Color(0.104833, 0.0655813, 1.20327e-08, 1)
@@ -41,6 +43,11 @@ loop = false
 [node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18051, 0)
 
+[node name="PlayerArea" type="Area3D" parent="PlayerPath/PlayerCart"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPath/PlayerCart/PlayerArea"]
+shape = SubResource("CapsuleShape3D_jivs5")
+
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 mesh = SubResource("PlaneMesh_jivs5")
@@ -52,3 +59,11 @@ environment = SubResource("Environment_c3ijb")
 
 [node name="Enemy" parent="EnemyHolder" instance=ExtResource("1_2of45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3731)
+
+[node name="Enemy2" parent="EnemyHolder" instance=ExtResource("1_2of45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.0378)
+
+[node name="Enemy3" parent="EnemyHolder" instance=ExtResource("1_2of45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -73.5755)
+
+[connection signal="area_entered" from="PlayerPath/PlayerCart/PlayerArea" to="." method="_on_player_area_area_entered"]

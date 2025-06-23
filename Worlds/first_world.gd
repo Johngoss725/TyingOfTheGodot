@@ -1,12 +1,37 @@
 extends Node3D
 
-
 @export var speed = 0.05
 
 @onready var player_cart=$PlayerPath/PlayerCart
 
 func _ready() -> void:
-	print("looking good ")
+	add_to_group("player")
+
+@onready var prev_state=""
+@onready var next_state="advance"
+@onready var curr_state=""
 
 func _process(delta: float) -> void:
-	player_cart.progress_ratio+=delta*speed
+	prev_state = curr_state
+	curr_state = next_state
+	
+	match curr_state:
+		"advance":
+			player_cart.progress_ratio+=delta*speed
+			
+		"engage":
+			pass
+			
+func engage_attack():
+	print("engaging attack")
+	next_state = "engage"
+
+func finish_attack():
+	print("finishing attack")
+	next_state = "advance"
+
+
+func _on_player_area_area_entered(area: Area3D) -> void:
+	if area.owner.is_in_group("enemy"):
+		area.owner.attack()
+		engage_attack()

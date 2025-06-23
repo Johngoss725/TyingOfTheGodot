@@ -15,6 +15,10 @@ run/main_scene="uid://pihrwjmka60b"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+KeyboardManger="*res://autoloads/KeyboardManger.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
