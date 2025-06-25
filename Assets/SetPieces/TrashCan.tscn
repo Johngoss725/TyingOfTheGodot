@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://xng8843dw2w3"]
+
+[ext_resource type="Material" uid="uid://u8rrrmg56ebq" path="res://Materials/MetalGrey.material" id="1_xcmut"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_akw6f"]
+material = ExtResource("1_xcmut")
+top_radius = 1.0
+bottom_radius = 0.75
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q0v7g"]
+material = ExtResource("1_xcmut")
+top_radius = 1.13
+bottom_radius = 1.205
+height = 0.21
+
+[sub_resource type="BoxMesh" id="BoxMesh_08l1s"]
+material = ExtResource("1_xcmut")
+size = Vector3(0.275, 0.21, 1.165)
+
+[node name="Trash" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.898392, 0)
+mesh = SubResource("CylinderMesh_akw6f")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97491, 0)
+mesh = SubResource("CylinderMesh_q0v7g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09321, 0)
+mesh = SubResource("BoxMesh_08l1s")

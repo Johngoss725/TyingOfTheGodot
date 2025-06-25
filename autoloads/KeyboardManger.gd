@@ -27,5 +27,5 @@ func _input(event):
 				active_enemy.update_word(curr_word)
 			if len(curr_word)<=0:
 				curr_word = null
-				get_tree().call_group("active_enemy","defeated")
+				get_tree().get_first_node_in_group("active_enemy").next_state="Die"
 			

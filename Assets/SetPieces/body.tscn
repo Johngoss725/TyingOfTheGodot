@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://boyg3wtx3ryxx"]
+
+[ext_resource type="Texture2D" uid="uid://c87wc3g0xhxhy" path="res://Materials/Textures/RegularBodyTexture.tres" id="1_rixbk"]
+[ext_resource type="Material" uid="uid://crhlm3655pcab" path="res://Materials/RegularBody.material" id="2_d1e47"]
+[ext_resource type="Material" uid="uid://csp1fl3gt85lc" path="res://Materials/RegularEyes.material" id="3_62qy4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12ugc"]
+albedo_texture = ExtResource("1_rixbk")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a0408"]
+material = SubResource("StandardMaterial3D_12ugc")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ax4jk"]
+material = ExtResource("2_d1e47")
+top_radius = 0.125
+bottom_radius = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_fp4ud"]
+material = ExtResource("2_d1e47")
+size = Vector3(0.2, 0.2, 1.69)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qksjh"]
+material = ExtResource("2_d1e47")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5raun"]
+material = ExtResource("3_62qy4")
+radius = 0.17
+height = 0.175
+
+[sub_resource type="TorusMesh" id="TorusMesh_ckd8b"]
+material = ExtResource("3_62qy4")
+inner_radius = 0.088
+outer_radius = 0.196
+
+[node name="Body" type="Node3D"]
+
+[node name="ZombieBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0153301, 0.799853, 0, -0.344157, -0.00659615, 0.722158, 0.722026, 0.0138384, 0.34422, 0, 0.129652, 0)
+mesh = SubResource("CapsuleMesh_a0408")
+
+[node name="Left" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(0.958591, -0.278506, -0.0594933, 0.284041, 0.950111, 0.128883, 0.0206308, -0.140444, 0.989874, 0.380693, -1.66544, 0.209532)
+mesh = SubResource("CylinderMesh_ax4jk")
+
+[node name="Right" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(0.963469, 0.267788, 0.00429958, -0.267822, 0.963386, 0.0126002, -0.000767767, -0.0132915, 0.999911, -0.518214, -1.65123, -0.0661873)
+mesh = SubResource("CylinderMesh_ax4jk")
+
+[node name="LeftArm" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(0.464062, -0.290867, 0.836687, 0.00889423, 0.946034, 0.323947, -0.885759, -0.14289, 0.441605, 0.999457, 0.847093, 0.537688)
+mesh = SubResource("BoxMesh_fp4ud")
+
+[node name="RightArm" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(0.244569, -0.425749, 0.871163, 0.00468743, 0.898955, 0.438016, -0.969621, -0.103041, 0.221852, -1.15938, 0.214672, -0.331595)
+mesh = SubResource("BoxMesh_fp4ud")
+
+[node name="Head" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000778735, 1.3027, -0.0223669)
+mesh = SubResource("SphereMesh_qksjh")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.252415, 1.444, 0.42169)
+mesh = SubResource("SphereMesh_5raun")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(1, 0, 0, 0, 0.999673, -0.0255663, 0, 0.0255663, 0.999673, -0.186631, 1.444, 0.412699)
+mesh = SubResource("SphereMesh_5raun")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ZombieBody"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.08819, 0.590108)
+visible = false
+mesh = SubResource("TorusMesh_ckd8b")

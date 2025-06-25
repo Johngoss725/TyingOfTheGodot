@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://pihrwjmka60b"]
+[gd_scene load_steps=24 format=3 uid="uid://pihrwjmka60b"]
 
 [ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
 [ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
+[ext_resource type="Shader" uid="uid://bw3nudqetgnig" path="res://Shaders/BrickGptA.gdshader" id="2_37wnl"]
+[ext_resource type="Material" uid="uid://bdeq30xo27jn1" path="res://Materials/Asphalt.material" id="2_lhx7d"]
+[ext_resource type="PackedScene" uid="uid://xng8843dw2w3" path="res://Assets/SetPieces/TrashCan.tscn" id="5_c3ijb"]
+[ext_resource type="PackedScene" uid="uid://boyg3wtx3ryxx" path="res://Assets/SetPieces/body.tscn" id="6_1ahrg"]
 
 [sub_resource type="Curve3D" id="Curve3D_vvisa"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.263565, 0, 0.0833736, 0, 0, 0, 0, 0, 0, 0.032655, 0, -5.03097, 0, 0, 0, 0, 0, 0, 0.0508882, 0, -14.1107, 0, 0, 0, 0, 0, 0, -0.0454791, 0, -24.2853, 0, 0, 0, 0, 0, 0, -0.043727, 0, -38.5418, 0, 0, 0, 0, 0, 0, -0.139807, 0, -58.3342, 0, 0, 0, 0, 0, 0, -0.11133, 0, -80.4771, 0, 0, 0, 0, 0, 0, 0.0287819, 0, -99.1576),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.263565, 0, 0.0833736, 0, 0, 0, 0, 0, 0, 0.032655, 0, -5.03097, 0, 0, 0, 0, 0, 0, 0.0508882, 0, -14.1107, 0, 0, 0, 0, 0, 0, -0.0454791, 0, -24.2853, 0, 0, 0, 0, 0, 0, -7.90536, 0, -23.8421, 0, 0, 0, 0, 0, 0, -16.0015, 0, -24.057, 0, 0, 0, 0, 0, 0, -24.3865, 0, -24.5068, 0, 0, 0, 0, 0, 0, -33.6683, 0, -24.1246),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -17,18 +21,73 @@ albedo_color = Color(0.104833, 0.0655813, 1.20327e-08, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jivs5"]
 material = SubResource("StandardMaterial3D_2of45")
-size = Vector2(2, 100)
+size = Vector2(2, 36.015)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c3ijb"]
+material = ExtResource("2_lhx7d")
+size = Vector2(21.54, 31.575)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37wnl"]
-sky_horizon_color = Color(0.535884, 0.660707, 0.859357, 1)
-ground_bottom_color = Color(0.290242, 0.402969, 0.317071, 1)
+sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_lhx7d"]
 sky_material = SubResource("ProceduralSkyMaterial_37wnl")
 
 [sub_resource type="Environment" id="Environment_c3ijb"]
 background_mode = 2
+background_energy_multiplier = 0.75
 sky = SubResource("Sky_lhx7d")
+ambient_light_energy = 1.23
+glow_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c3ijb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ahrg"]
+render_priority = 0
+shader = ExtResource("2_37wnl")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_c3ijb")
+shader_parameter/base_brick_color = Color(0.16334, 0.0303424, 0.0090763, 1)
+shader_parameter/mortar_color = Color(0.505882, 0.184314, 0.180392, 1)
+shader_parameter/brick_width = 0.3
+shader_parameter/brick_height = 0.035
+shader_parameter/mortar_thickness = 0.005
+shader_parameter/smoothness = 0.005
+shader_parameter/noise_strength = 0.48
+shader_parameter/noise_scale = 5.275
+
+[sub_resource type="BoxMesh" id="BoxMesh_qd2iy"]
+material = SubResource("ShaderMaterial_1ahrg")
+size = Vector3(3.55, 10, 3.47)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u5r2"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_3qctl"]
+material = SubResource("StandardMaterial3D_2u5r2")
+size = Vector3(4.91, 1.89, 4.13)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c3ijb"]
+material = ExtResource("2_lhx7d")
+top_radius = 3.0
+bottom_radius = 3.0
+height = 13.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ahrg"]
+albedo_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2u5r2"]
+material = SubResource("StandardMaterial3D_1ahrg")
+top_radius = 0.145
+bottom_radius = 4.648
+height = 5.105
+radial_segments = 49
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1ahrg"]
+size = Vector2(5.01, 32.03)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_jivs5")
@@ -37,20 +96,32 @@ script = ExtResource("1_jivs5")
 curve = SubResource("Curve3D_vvisa")
 
 [node name="PlayerCart" type="PathFollow3D" parent="PlayerPath"]
-transform = Transform3D(0.998324, 0, -0.0578224, 0, 1, 0, 0.0578224, 0, 0.998324, -0.263565, 0, 0.0833736)
+transform = Transform3D(0.998323, 0, -0.0578223, 0, 1, 0, 0.0578223, 0, 0.998323, -0.263565, 0, 0.0833736)
 loop = false
 
 [node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18051, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.156, 0)
 
-[node name="PlayerArea" type="Area3D" parent="PlayerPath/PlayerCart"]
+[node name="PlayerArea" type="Area3D" parent="PlayerPath/PlayerCart" groups=["player_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.959562, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPath/PlayerCart/PlayerArea"]
 shape = SubResource("CapsuleShape3D_jivs5")
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+[node name="Road" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.5502)
+visible = false
 mesh = SubResource("PlaneMesh_jivs5")
+
+[node name="Road2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.180365, 0, -0.9836, 0, 1, 0, 0.9836, 0, -0.180365, -18.2209, 0, -39.5167)
+visible = false
+mesh = SubResource("PlaneMesh_jivs5")
+
+[node name="ActualGround" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.145, -16.9064)
+mesh = SubResource("PlaneMesh_c3ijb")
+skeleton = NodePath("../BuildingHolder/BaseBuilding/Building")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c3ijb")
@@ -58,12 +129,232 @@ environment = SubResource("Environment_c3ijb")
 [node name="EnemyHolder" type="Node3D" parent="."]
 
 [node name="Enemy" parent="EnemyHolder" instance=ExtResource("1_2of45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3731)
+transform = Transform3D(0.393573, 0, -0.919293, 0, 1, 0, 0.919293, 0, 0.393573, 7.10533, 0, -13.3835)
 
-[node name="Enemy2" parent="EnemyHolder" instance=ExtResource("1_2of45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.0378)
+[node name="Enemy4" parent="EnemyHolder" instance=ExtResource("1_2of45")]
+transform = Transform3D(0.393573, 0, -0.919293, 0, 1, 0, 0.919293, 0, 0.393573, 8.09623, 0, -23.1574)
 
-[node name="Enemy3" parent="EnemyHolder" instance=ExtResource("1_2of45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -73.5755)
+[node name="Enemy5" parent="EnemyHolder" instance=ExtResource("1_2of45")]
+transform = Transform3D(0.975099, 0, 0.22177, 0, 1, 0, -0.22177, 0, 0.975099, -1.13721, 0, -27.4363)
+
+[node name="Enemy6" parent="EnemyHolder" instance=ExtResource("1_2of45")]
+transform = Transform3D(-0.0549852, 0, 0.998487, 0, 1, 0, -0.998487, 0, -0.0549852, -9.71613, 0, -23.5145)
+
+[node name="BuildingHolder" type="Node3D" parent="."]
+
+[node name="BaseBuilding" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.946002, -0.207811, -0.248786, 0.204282, 0.978085, -0.0402169, 0.251691, -0.0127773, 0.967723, 7.63326, 3.05899, -3.71369)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding2" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.95781, -0.237412, 0.161973, 0.243158, 0.969849, -0.0163308, -0.153213, 0.0550269, 0.98666, 7.00906, 3.60969, -9.67453)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding3" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.970801, -0.229897, -0.068498, 0.229327, 0.973215, -0.0161809, 0.0703832, 0, 0.99752, 6.89575, 4.38182, -17.7846)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding7" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.948967, -0.149818, -0.277518, 0.0895054, 0.971719, -0.218519, 0.302408, 0.182528, 0.935539, 7.97641, 3.46454, -30.6521)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding8" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46121, 3.46454, -30.6521)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding8"]
+transform = Transform3D(1, 0, 0, 0, 0.975076, -0.221872, 0, 0.221872, 0.975076, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding8"]
+transform = Transform3D(1, 0, 0, 0, 0.962013, -0.273002, 0, 0.273002, 0.962013, 0, 4.19461, 0.979996)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding9" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.03127, 3.46454, -30.6521)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding10" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3742, 3.46454, -30.7336)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding11" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.995768, 0.00391413, 0.091818, 0, 0.999093, -0.0425906, -0.0919013, 0.0424104, 0.994865, -15.234, 3.46454, -18.1104)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding12" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7265, 3.46454, -18.0289)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding4" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.981358, 0.186113, -0.0479358, -0.17411, 0.966561, 0.188271, 0.0813725, -0.176415, 0.980947, -7.4142, 4.05344, -17.7846)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding4"]
+transform = Transform3D(0.999999, 0.00115857, -8.07643e-06, -0.00115857, 0.999902, -0.0139666, -8.09133e-06, 0.0139666, 0.999902, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding5" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.973857, 0.212442, 0.0804425, -0.217818, 0.973809, 0.0652085, -0.0644825, -0.0810256, 0.994624, -7.30895, 3.46454, -10.1297)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding6" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.967259, 0.252932, -0.0208847, -0.253723, 0.965642, -0.0562142, 0.00594876, 0.0596726, 0.9982, -7.46448, 3.46454, -3.46615)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="Trash" parent="BuildingHolder" instance=ExtResource("5_c3ijb")]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 4.479, 0, -10.1234)
+
+[node name="Trash2" parent="BuildingHolder" instance=ExtResource("5_c3ijb")]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -5.48802, 0, -6.26801)
+
+[node name="Trash3" parent="BuildingHolder" instance=ExtResource("5_c3ijb")]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -8.82707, 0, -14.3306)
+
+[node name="Trash4" parent="BuildingHolder" instance=ExtResource("5_c3ijb")]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 8.35678, 0, -20.6829)
+
+[node name="Trash5" parent="BuildingHolder" instance=ExtResource("5_c3ijb")]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 3.95901, 0, -24.1034)
+
+[node name="Tower" type="MeshInstance3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4507, 5.97357, -11.8637)
+mesh = SubResource("CylinderMesh_c3ijb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/Tower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7587, 0)
+mesh = SubResource("CylinderMesh_2u5r2")
+
+[node name="Tower2" type="MeshInstance3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.571, 5.97357, -38.5027)
+mesh = SubResource("CylinderMesh_c3ijb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/Tower2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7587, 0)
+mesh = SubResource("CylinderMesh_2u5r2")
+
+[node name="Tower3" type="MeshInstance3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2196, 5.97357, -38.6641)
+mesh = SubResource("CylinderMesh_c3ijb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/Tower3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7587, 0)
+mesh = SubResource("CylinderMesh_2u5r2")
+
+[node name="Tower4" type="MeshInstance3D" parent="BuildingHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3386, 5.97357, -26.5555)
+mesh = SubResource("CylinderMesh_c3ijb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/Tower4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7587, 0)
+mesh = SubResource("CylinderMesh_2u5r2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10.2002, 1.12795, -16.5364)
+mesh = SubResource("PlaneMesh_1ahrg")
+
+[node name="Body" parent="BuildingHolder" instance=ExtResource("6_1ahrg")]
+transform = Transform3D(-0.987963, 0, 0.154693, 0, 1, 0, -0.154693, 0, -0.987963, 2.93224, 0, -25.711)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.34816, -25.7671)
+light_energy = 16.0
+spot_range = 19.6012
 
 [connection signal="area_entered" from="PlayerPath/PlayerCart/PlayerArea" to="." method="_on_player_area_area_entered"]

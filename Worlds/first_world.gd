@@ -22,9 +22,6 @@ func _process(delta: float) -> void:
 		"engage":
 			pass
 			
-func engage_attack():
-	print("engaging attack")
-	next_state = "engage"
 
 func finish_attack():
 	print("finishing attack")
@@ -33,5 +30,5 @@ func finish_attack():
 
 func _on_player_area_area_entered(area: Area3D) -> void:
 	if area.owner.is_in_group("enemy"):
-		area.owner.attack()
-		engage_attack()
+		area.owner.next_state="Walk_to"
+		next_state="engage"
