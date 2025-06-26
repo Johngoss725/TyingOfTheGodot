@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3se8yqgo4vks"]
+
+[ext_resource type="Material" uid="uid://bdeq30xo27jn1" path="res://Materials/Asphalt.material" id="1_0yymm"]
+[ext_resource type="Material" uid="uid://u8rrrmg56ebq" path="res://Materials/MetalGrey.material" id="2_5f6yb"]
+[ext_resource type="Material" uid="uid://c4uit0m5q5kwr" path="res://Materials/LightBulb.material" id="3_y0np0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_48qoj"]
+material = ExtResource("1_0yymm")
+top_radius = 0.245
+height = 1.26
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mofaq"]
+material = ExtResource("2_5f6yb")
+top_radius = 0.11
+bottom_radius = 0.08
+height = 4.778
+
+[sub_resource type="BoxMesh" id="BoxMesh_trnma"]
+material = ExtResource("2_5f6yb")
+size = Vector3(0.46, 0.435, 2.16)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0yymm"]
+material = ExtResource("3_y0np0")
+radius = 0.185
+height = 0.61
+
+[node name="Lampost" type="Node3D"]
+
+[node name="Bottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.617107, 0)
+mesh = SubResource("CylinderMesh_48qoj")
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30266, 0)
+mesh = SubResource("CylinderMesh_mofaq")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.56398, 0.700548)
+mesh = SubResource("BoxMesh_trnma")
+
+[node name="Bulb" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.26057, 1.50709)
+mesh = SubResource("SphereMesh_0yymm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.170364, 0.985381, 0, -0.985381, -0.170364, 0, 5.0233, 1.65025)
+light_color = Color(1, 1, 0.556863, 1)
+light_energy = 16.0
+spot_range = 7.67862
+spot_angle = 35.8496

@@ -30,5 +30,6 @@ func finish_attack():
 
 func _on_player_area_area_entered(area: Area3D) -> void:
 	if area.owner.is_in_group("enemy"):
-		area.owner.next_state="Walk_to"
+		if area.owner.dead==false:
+			area.owner.next_state="Walk_to"
 		next_state="engage"
