@@ -1,22 +1,40 @@
-[gd_scene load_steps=40 format=3 uid="uid://pihrwjmka60b"]
+[gd_scene load_steps=57 format=3 uid="uid://pihrwjmka60b"]
 
 [ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
 [ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
 [ext_resource type="Shader" uid="uid://bw3nudqetgnig" path="res://Shaders/BrickGptA.gdshader" id="2_37wnl"]
 [ext_resource type="Material" uid="uid://bdeq30xo27jn1" path="res://Materials/Asphalt.material" id="2_lhx7d"]
 [ext_resource type="PackedScene" uid="uid://ctse5jscksh37" path="res://Assets/Player/PlayerMeshes.tscn" id="2_qd2iy"]
+[ext_resource type="Material" uid="uid://bug2s5muq1wid" path="res://Materials/Grass.material" id="3_3qctl"]
 [ext_resource type="PackedScene" uid="uid://xng8843dw2w3" path="res://Assets/SetPieces/TrashCan.tscn" id="5_c3ijb"]
 [ext_resource type="PackedScene" uid="uid://boyg3wtx3ryxx" path="res://Assets/SetPieces/body.tscn" id="6_1ahrg"]
 [ext_resource type="PackedScene" uid="uid://d3se8yqgo4vks" path="res://Assets/SetPieces/lampost.tscn" id="7_2u5r2"]
 [ext_resource type="Material" uid="uid://dptdk886tc1ni" path="res://Materials/WoodMaterial.material" id="8_dy4m2"]
 [ext_resource type="PackedScene" uid="uid://b1s5yp8cumpxo" path="res://Assets/SetPieces/clouds.tscn" id="9_k4jf7"]
+[ext_resource type="Material" uid="uid://dckd4w7qsbowm" path="res://Materials/LargerFence.material" id="11_5ej7r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ej7r"]
+albedo_color = Color(0.304052, 0.206732, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_buwvj"]
+material = SubResource("StandardMaterial3D_5ej7r")
+bottom_radius = 1.719
+height = 8.61
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42xel"]
+albedo_color = Color(7.82125e-07, 0.390987, 0.015363, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cqb8u"]
+material = SubResource("StandardMaterial3D_42xel")
+radius = 3.093
+height = 3.235
 
 [sub_resource type="Curve3D" id="Curve3D_vvisa"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.263565, 0, 0.0833736, 0, 0, 0, 0, 0, 0, 0.032655, 0, -5.03097, 0, 0, 0, 0, 0, 0, 0.0508882, 0, -14.1107, 0, 0, 0, 0, 0, 0, -0.0454791, 0, -24.2853, 0, 0, 0, 0, 0, 0, -7.90536, 0, -23.8421, 0, 0, 0, 0, 0, 0, -16.0015, 0, -24.057, 0, 0, 0, 0, 0, 0, -24.3865, 0, -24.5068, 0, 0, 0, 0, 0, 0, -33.6683, 0, -24.1246),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.263565, 0, 0.0833736, 0, 0, 0, 0, 0, 0, 0.032655, 0, -5.03097, 0, 0, 0, 0, 0, 0, 0.0508882, 0, -14.1107, 0, 0, 0, 0, 0, 0, -0.0454791, 0, -24.2853, 0, 0, 0, 0, 0, 0, -7.90536, 0, -23.8421, 0, 0, 0, 0, 0, 0, -16.0015, 0, -24.057, 0, 0, 0, 0, 0, 0, -34.0852, 0.178003, -23.629, 0, 0, 0, 0, 0, 0, -69.0702, 0.359508, -22.6832, 0, 0, 0, 0, 0, 0, -81.2304, 0.359497, -23.1936, 0, 0, 0, 0, 0, 0, -96.7776, 0.359497, -23.1936, 0, 0, 0, 0, 0, 0, -97.9083, 0.359497, -42.1329, 0, 0, 0, 0, 0, 0, -99.8772, 0.359497, -74.0055, 0, 0, 0, 0, 0, 0, -100.609, 0.359497, -109.394, 0, 0, 0, 0, 0, 0, -99.4444, 0.359497, -148.215, 0, 0, 0, 0, 0, 0, -157.17, 0.359497, -149.779, 0, 0, 0, 0, 0, 0, -211.532, 0.359497, -152.38, 0, 0, 0, 0, 0, 0, -298.821, 0.359497, -157.11),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 8
+point_count = 17
 
 [sub_resource type="Gradient" id="Gradient_k4jf7"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 0.227451)
@@ -66,34 +84,6 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jivs5"]
 
-[sub_resource type="Animation" id="Animation_3qctl"]
-resource_name = "scan"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SecondaryCam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.00825, 4.03243, 5.93333, 7.56667, 10.0333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.731347, 0.130837, -0.0487906), Vector3(-0.295088, 0.114608, -0.0165213), Vector3(-0.184886, 0.315308, -0.0101649), Vector3(-0.184886, 0.315308, -0.0101649), Vector3(-0.295088, 0.114608, -0.0165213), Vector3(-0.731347, 0.130837, -0.0487906)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SecondaryCam:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.00825, 4.03243, 5.93333, 7.56667, 10.0333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.35531, 4.40307, 1.57636), Vector3(0.425289, 3.56522, 2.78457), Vector3(1.53487, 1.98261, 0.948533), Vector3(1.53487, 1.98261, 0.948533), Vector3(0.425289, 3.56522, 2.78457), Vector3(0.35531, 4.40307, 1.57636)]
-}
-
 [sub_resource type="Animation" id="Animation_5ej7r"]
 length = 0.001
 tracks/0/type = "value"
@@ -124,6 +114,34 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_buwvj"]
 resource_name = "new_animation"
 
+[sub_resource type="Animation" id="Animation_3qctl"]
+resource_name = "scan"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SecondaryCam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.00825, 4.03243, 5.93333, 7.56667, 10.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.731347, 0.130837, -0.0487906), Vector3(-0.295088, 0.114608, -0.0165213), Vector3(-0.184886, 0.315308, -0.0101649), Vector3(-0.184886, 0.315308, -0.0101649), Vector3(-0.295088, 0.114608, -0.0165213), Vector3(-0.731347, 0.130837, -0.0487906)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SecondaryCam:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.00825, 4.03243, 5.93333, 7.56667, 10.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.35531, 4.40307, 1.57636), Vector3(0.425289, 3.56522, 2.78457), Vector3(1.53487, 1.98261, 0.948533), Vector3(1.53487, 1.98261, 0.948533), Vector3(0.425289, 3.56522, 2.78457), Vector3(0.35531, 4.40307, 1.57636)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42xel"]
 _data = {
 &"RESET": SubResource("Animation_5ej7r"),
@@ -139,7 +157,7 @@ material = SubResource("StandardMaterial3D_2of45")
 size = Vector2(2, 36.015)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c3ijb"]
-material = ExtResource("2_lhx7d")
+material = ExtResource("3_3qctl")
 size = Vector2(21.54, 31.575)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37wnl"]
@@ -185,6 +203,16 @@ albedo_color = Color(0.144063, 0.144063, 0.144063, 1)
 material = SubResource("StandardMaterial3D_2u5r2")
 size = Vector3(4.91, 1.89, 4.13)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qctl"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.862745, 1, 0, 1)
+emission_energy_multiplier = 1.94
+
+[sub_resource type="QuadMesh" id="QuadMesh_5ej7r"]
+material = SubResource("StandardMaterial3D_3qctl")
+size = Vector2(1.455, 1.955)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_c3ijb"]
 material = ExtResource("2_lhx7d")
 top_radius = 3.0
@@ -213,18 +241,144 @@ size = Vector2(6.24, 6.045)
 material = ExtResource("8_dy4m2")
 size = Vector2(5.225, 5.84)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_buwvj"]
+material = ExtResource("11_5ej7r")
+size = Vector2(43.375, 7.735)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qd2iy"]
+albedo_color = Color(0.752345, 0.928077, 1, 1)
+emission_enabled = true
+emission = Color(0.197433, 0.705884, 0.912862, 1)
+emission_energy_multiplier = 2.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_3qctl"]
+material = SubResource("StandardMaterial3D_qd2iy")
+radius = 7.817
+height = 12.73
+
+[sub_resource type="QuadMesh" id="QuadMesh_qd2iy"]
+material = SubResource("StandardMaterial3D_3qctl")
+size = Vector2(0.99, 0.66)
+
+[sub_resource type="Gradient" id="Gradient_5ej7r"]
+colors = PackedColorArray(0.259294, 0.259294, 0.259294, 1, 7.46027e-07, 0.452196, 0.209945, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buwvj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_42xel"]
+color_ramp = SubResource("Gradient_5ej7r")
+noise = SubResource("FastNoiseLite_buwvj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqb8u"]
+albedo_texture = SubResource("NoiseTexture2D_42xel")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ekhpj"]
+material = SubResource("StandardMaterial3D_cqb8u")
+size = Vector2(34.275, 21.31)
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_jivs5")
+
+[node name="Tree" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85679, 5.01839, -35.0038)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.02107, 5.01839, -36.6217)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.7019, 5.01839, -32.5276)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.5392, 5.01839, -32.5276)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.7562, 5.01839, -32.5276)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.0059, 5.01839, -38.5029)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984847, 0.173425, 0, -0.173425, 0.984847, -68.8442, 5.01839, -18.9766)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4515, 5.01839, -15.5233)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8534, 5.01839, -17.1348)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
+
+[node name="Tree10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.997119, 0.0758489, 0, -0.0758489, 0.997119, -56.6147, 2.51789, -17.9132)
+mesh = SubResource("CylinderMesh_buwvj")
+skeleton = NodePath("../ActualGround")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48856, 0)
+mesh = SubResource("SphereMesh_cqb8u")
 
 [node name="PlayerPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_vvisa")
 
 [node name="PlayerCart" type="PathFollow3D" parent="PlayerPath"]
-transform = Transform3D(0.998323, 0, -0.0578223, 0, 1, 0, 0.0578223, 0, 0.998323, -0.263565, 0, 0.0833736)
+transform = Transform3D(0.998322, 0, -0.0578223, 0, 1, 0, 0.0578223, 0, 0.998322, -0.263565, 0, 0.0833736)
 loop = false
 
 [node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.156, 0)
+current = true
 
 [node name="Control" type="Control" parent="PlayerPath/PlayerCart/Camera3D"]
 layout_mode = 3
@@ -285,8 +439,7 @@ light_energy = 16.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="SecondaryCam" type="Camera3D" parent="PlayerPath/PlayerCart"]
-transform = Transform3D(0.994527, -0.0386751, 0.0971014, -0.0362994, 0.74339, 0.667875, -0.0980144, -0.667739, 0.737917, 0.425289, 3.56522, 2.78457)
-current = true
+transform = Transform3D(0.994527, -0.0386753, 0.0971015, -0.0362994, 0.74339, 0.667875, -0.0980146, -0.667739, 0.737917, 0.425289, 3.56522, 2.78457)
 
 [node name="CamAnims" type="AnimationPlayer" parent="PlayerPath/PlayerCart"]
 libraries = {
@@ -484,8 +637,67 @@ mesh = SubResource("BoxMesh_qd2iy")
 skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.19461, 0)
+transform = Transform3D(1, 1.81317e-08, -2.32831e-09, 2.61934e-09, 1, 0, 4.65661e-10, 0, 1, 0, 4.19461, 0)
 mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding6"]
+transform = Transform3D(0.0184733, -0.0864464, 0.996085, -0.101158, 0.990982, 0.0878794, -0.994699, -0.102386, 0.0095619, 1.88402, -0.136166, -0.0157824)
+mesh = SubResource("QuadMesh_5ej7r")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding13" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.967259, 0.252932, -0.0208847, -0.253723, 0.965642, -0.0562142, 0.00594876, 0.0596726, 0.9982, -32.1536, 3.46454, -18.0672)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding13"]
+transform = Transform3D(1, 1.81317e-08, -2.32831e-09, 2.61934e-09, 1, 0, 4.65661e-10, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding13"]
+transform = Transform3D(0.0184733, -0.0864464, 0.996085, -0.101158, 0.990982, 0.0878794, -0.994699, -0.102386, 0.0095619, 1.88402, -0.136166, -0.0157824)
+mesh = SubResource("QuadMesh_5ej7r")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding14" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.119819, -0.0262922, -0.992447, -0.253723, 0.965642, -0.0562142, 0.959827, 0.258542, 0.109031, -24.9858, 3.46454, -28.4207)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding14"]
+transform = Transform3D(1, 1.81317e-08, -2.32831e-09, 2.61934e-09, 1, 0, 4.65661e-10, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding14"]
+transform = Transform3D(0.0184733, -0.0864464, 0.996085, -0.101158, 0.990982, 0.0878794, -0.994699, -0.102386, 0.0095619, 1.88402, -0.136166, -0.0157824)
+mesh = SubResource("QuadMesh_5ej7r")
+skeleton = NodePath("../../..")
+
+[node name="BaseBuilding15" type="Node3D" parent="BuildingHolder"]
+transform = Transform3D(0.119819, -0.0262922, -0.992447, -0.253723, 0.965642, -0.0562142, 0.959827, 0.258542, 0.109031, -33.5516, 3.46454, -27.6854)
+
+[node name="Building" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59956, 0)
+mesh = SubResource("BoxMesh_qd2iy")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding15"]
+transform = Transform3D(1, 1.81317e-08, -2.32831e-09, 2.61934e-09, 1, 0, 4.65661e-10, 0, 1, 0, 4.19461, 0)
+mesh = SubResource("PrismMesh_3qctl")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BuildingHolder/BaseBuilding15"]
+transform = Transform3D(0.0184733, -0.0864464, 0.996085, -0.101158, 0.990982, 0.0878794, -0.994699, -0.102386, 0.0095619, 1.88402, -0.136166, -0.0157824)
+mesh = SubResource("QuadMesh_5ej7r")
 skeleton = NodePath("../../..")
 
 [node name="Trash" parent="BuildingHolder" instance=ExtResource("5_c3ijb")]
@@ -512,11 +724,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7587, 0)
 mesh = SubResource("CylinderMesh_2u5r2")
 
 [node name="Tower2" type="MeshInstance3D" parent="BuildingHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.571, 5.97357, -38.5027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.84215, 5.97357, -45.0103)
 mesh = SubResource("CylinderMesh_c3ijb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BuildingHolder/Tower2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7587, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271149, 8.7587, 0.271149)
 mesh = SubResource("CylinderMesh_2u5r2")
 
 [node name="Tower3" type="MeshInstance3D" parent="BuildingHolder"]
@@ -594,7 +806,52 @@ mesh = SubResource("PlaneMesh_1ahrg")
 skeleton = NodePath("../../BuildingHolder")
 
 [node name="Fences6" type="MeshInstance3D" parent="FenceHolder"]
-transform = Transform3D(-0.946293, -0.31699, -0.0636158, -0.067075, 2.93194e-09, 0.997748, -0.316276, 0.948429, -0.0212621, -9.95485, 1.59925, -32.8515)
+transform = Transform3D(-0.995588, -0.0657686, -0.0669297, -0.067075, 3.52711e-09, 0.997748, -0.0656204, 0.997835, -0.00441145, -9.95485, 1.59925, -32.8515)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences8" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(-0.995588, -0.0657686, -0.0669297, -0.067075, 3.52711e-09, 0.997748, -0.0656204, 0.997835, -0.00441145, -12.7842, 1.59925, -32.5943)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences9" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(-0.956457, 0.284702, -0.0642991, -0.067075, 3.52711e-09, 0.997748, 0.284061, 0.958616, 0.0190963, -20.7148, 1.59925, -30.0223)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences10" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(-0.997656, 0.0135785, -0.0670687, -0.067075, 3.52711e-09, 0.997748, 0.013548, 0.999908, 0.000910755, -29.2866, 1.59925, -27.1508)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences20" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(0.998097, 0.0608277, 0.0100681, -0.010298, 0.00346683, 0.999941, 0.060789, -0.998143, 0.00408665, -56.0665, 0.782878, -19.8847)
+mesh = SubResource("PlaneMesh_buwvj")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences21" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(-0.996399, 0.0841237, -0.0105532, -0.010298, 0.00346682, 0.999941, 0.0841554, 0.99645, -0.00258806, -55.8027, 1.17644, -27.0944)
+mesh = SubResource("PlaneMesh_buwvj")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences13" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(0.997369, -0.027538, 0.0670495, -0.067075, -6.47854e-10, 0.997748, -0.0274762, -0.999621, -0.00184709, -26.9508, 1.59925, -19.5103)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences14" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(0.997369, -0.027538, 0.0670495, -0.067075, -6.47854e-10, 0.997748, -0.0274762, -0.999621, -0.00184709, -18.8563, 1.59925, -19.0786)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences15" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(0.997369, -0.027538, 0.0670495, -0.067075, -6.47854e-10, 0.997748, -0.0274762, -0.999621, -0.00184709, -11.6672, 1.59925, -15.9487)
+mesh = SubResource("PlaneMesh_1ahrg")
+skeleton = NodePath("../../BuildingHolder")
+
+[node name="Fences16" type="MeshInstance3D" parent="FenceHolder"]
+transform = Transform3D(0.00835906, 0.999965, 0.000561911, -0.067075, -1.59275e-09, 0.997748, 0.997713, -0.00837772, 0.0670726, -9.58729, 1.59925, -13.6413)
 mesh = SubResource("PlaneMesh_1ahrg")
 skeleton = NodePath("../../BuildingHolder")
 
@@ -624,6 +881,58 @@ transform = Transform3D(0.820022, 0, -0.572332, 0, 1, 0, 0.572332, 0, 0.820022, 
 
 [node name="Clouds4" parent="CloudHolder" instance=ExtResource("9_k4jf7")]
 transform = Transform3D(-0.838271, 0, -0.545254, 0, 1, 0, 0.545254, 0, -0.838271, -8.19261, 13.6796, -16.3074)
+
+[node name="Moon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3249, 36.7448, -125.871)
+mesh = SubResource("SphereMesh_3qctl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.26182, -0.174697, -0.949174, -0.0464535, 0.984622, -0.168407, 0.963998, 4.00246e-09, -0.265909, 5.87364, 2.85592, -4.74224)
+mesh = SubResource("QuadMesh_5ej7r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.26182, -0.174697, -0.949174, -0.0464535, 0.984622, -0.168407, 0.963998, 4.00246e-09, -0.265909, 5.36159, 2.85592, -3.10138)
+mesh = SubResource("QuadMesh_5ej7r")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.211252, -0.155093, -0.965049, -0.0464535, 0.984622, -0.168407, 0.976327, 0.0804061, 0.200799, 5.36159, 2.85592, -8.91185)
+mesh = SubResource("QuadMesh_5ej7r")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0130563, 0.169173, 0.9855, -0.0464535, 0.984622, -0.168407, -0.998835, -0.0435811, 0.0207141, -5.34875, 2.85592, -10.0563)
+mesh = SubResource("QuadMesh_5ej7r")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987112, 0.0990387, 0.125702, -0.117775, 0.981395, 0.151635, -0.108345, -0.164485, 0.980411, -7.29941, 4.22524, -8.26395)
+mesh = SubResource("QuadMesh_5ej7r")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987112, 0.0990387, 0.125702, -0.117775, 0.981395, 0.151635, -0.108345, -0.164485, 0.980411, 1.44965, 4.22524, -27.0529)
+mesh = SubResource("QuadMesh_5ej7r")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987112, 0.0990387, 0.125702, -0.103712, 0.994119, 0.0311785, -0.121874, -0.0438136, 0.991578, -5.19038, 5.39527, -28.817)
+mesh = SubResource("QuadMesh_qd2iy")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987112, 0.0990387, 0.125702, -0.103712, 0.994119, 0.0311785, -0.121874, -0.0438136, 0.991578, -6.76892, 5.39527, -28.817)
+mesh = SubResource("QuadMesh_qd2iy")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987112, 0.0990387, 0.125702, -0.103712, 0.994119, 0.0311785, -0.121874, -0.0438136, 0.991578, -5.19038, 4.17385, -28.817)
+mesh = SubResource("QuadMesh_qd2iy")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987112, 0.0990387, 0.125702, -0.103712, 0.994119, 0.0311785, -0.121874, -0.0438136, 0.991578, -6.76892, 4.17385, -28.817)
+mesh = SubResource("QuadMesh_qd2iy")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.9742, 0, -22.1171)
+mesh = SubResource("PlaneMesh_ekhpj")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.7314, 0, -22.1171)
+mesh = SubResource("PlaneMesh_ekhpj")
 
 [connection signal="area_entered" from="PlayerPath/PlayerCart/PlayerArea" to="." method="_on_player_area_area_entered"]
 [connection signal="animation_finished" from="PlayerPath/PlayerCart/CamAnims" to="." method="_on_cam_anims_animation_finished"]

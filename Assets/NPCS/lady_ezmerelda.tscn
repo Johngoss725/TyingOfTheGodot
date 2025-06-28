@@ -1,0 +1,192 @@
+[gd_scene load_steps=23 format=3 uid="uid://dckjvete6ikch"]
+
+[ext_resource type="Material" uid="uid://bupbeoh3tjgsb" path="res://Materials/Shirt.material" id="1_ftw23"]
+[ext_resource type="Material" uid="uid://c82y3l2yey75q" path="res://Materials/Jeans.material" id="2_2niqd"]
+[ext_resource type="Material" uid="uid://b86ahoory22tp" path="res://Materials/BlackSkin.material" id="3_ayax6"]
+[ext_resource type="Material" uid="uid://1ixk0jro3rn0" path="res://Materials/BlackHair.material" id="4_pap81"]
+[ext_resource type="Material" uid="uid://u8rrrmg56ebq" path="res://Materials/MetalGrey.material" id="5_2niqd"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vj2a1"]
+material = ExtResource("1_ftw23")
+radius = 0.6
+height = 2.14
+
+[sub_resource type="SphereMesh" id="SphereMesh_3diva"]
+material = ExtResource("2_2niqd")
+radius = 0.81
+height = 1.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_puftg"]
+material = ExtResource("3_ayax6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_aijlp"]
+material = ExtResource("4_pap81")
+radius = 0.325
+height = 0.745
+
+[sub_resource type="SphereMesh" id="SphereMesh_hjcbn"]
+material = ExtResource("4_pap81")
+radius = 0.15
+height = 0.34
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vwka"]
+material = ExtResource("4_pap81")
+height = 0.525
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ml8sx"]
+radius = 0.135
+height = 0.255
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugka8"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mjll0"]
+material = SubResource("StandardMaterial3D_ugka8")
+radius = 0.04
+height = 0.06
+
+[sub_resource type="SphereMesh" id="SphereMesh_ffqfl"]
+material = ExtResource("1_ftw23")
+radius = 0.375
+height = 0.75
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yityu"]
+material = ExtResource("2_2niqd")
+top_radius = 0.28
+bottom_radius = 0.145
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_md55e"]
+material = ExtResource("1_ftw23")
+top_radius = 0.18
+bottom_radius = 0.09
+height = 1.715
+
+[sub_resource type="Curve" id="Curve_2niqd"]
+_data = [Vector2(0.296417, 0), 0.0, 0.0, 0, 0, Vector2(0.501629, 0.307237), 0.0, 0.0, 0, 0, Vector2(0.716612, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayax6"]
+albedo_color = Color(0.678534, 0.188601, 0.241086, 1)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pap81"]
+material = SubResource("StandardMaterial3D_ayax6")
+shape = 0
+size = 0.455
+curve = SubResource("Curve_2niqd")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ayax6"]
+material = ExtResource("5_2niqd")
+radius = 0.165
+height = 1.265
+
+[sub_resource type="SphereMesh" id="SphereMesh_2niqd"]
+material = ExtResource("3_ayax6")
+radius = 0.18
+height = 0.38
+
+[node name="LadyEzmerelda" type="Node3D"]
+
+[node name="Placer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45628, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56818, 0)
+mesh = SubResource("CapsuleMesh_vj2a1")
+skeleton = NodePath("../..")
+
+[node name="Bottom" type="MeshInstance3D" parent="Placer/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.713987, 0)
+mesh = SubResource("SphereMesh_3diva")
+
+[node name="Head" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.06866, 0.122316)
+mesh = SubResource("SphereMesh_puftg")
+skeleton = NodePath("../..")
+
+[node name="Hair" type="MeshInstance3D" parent="Placer/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685674, -0.239986)
+mesh = SubResource("SphereMesh_aijlp")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Placer/Head/Hair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.399977, -0.171419)
+mesh = SubResource("SphereMesh_hjcbn")
+skeleton = NodePath("../../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Placer/Head"]
+transform = Transform3D(1, 0, 0, 0, 0.94468, 0.327993, 0, -0.327993, 0.94468, 0, 0.0208144, -0.00693822)
+mesh = SubResource("SphereMesh_5vwka")
+
+[node name="EyeRight" type="MeshInstance3D" parent="Placer/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186131, 0.0694084, 0.36512)
+mesh = SubResource("SphereMesh_ml8sx")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Placer/Head/EyeRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0303074, 0.0220418, 0.106823)
+mesh = SubResource("SphereMesh_mjll0")
+
+[node name="EyeLeft" type="MeshInstance3D" parent="Placer/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226594, 0.0694084, 0.36512)
+mesh = SubResource("SphereMesh_ml8sx")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Placer/Head/EyeLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0336225, 0.0220418, 0.106823)
+mesh = SubResource("SphereMesh_mjll0")
+skeleton = NodePath("../../EyeRight")
+
+[node name="BreastsRight" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27699, 1.9951, 0.426475)
+mesh = SubResource("SphereMesh_ffqfl")
+skeleton = NodePath("../..")
+
+[node name="BreastsLeft" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337517, 1.99172, 0.398156)
+mesh = SubResource("SphereMesh_ffqfl")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404432, -0.329537, 0)
+mesh = SubResource("CylinderMesh_yityu")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43439, -0.329537, 0)
+mesh = SubResource("CylinderMesh_yityu")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(0.721724, -0.692181, 0, 0.692181, 0.721724, 0, 0, 0, 1, 0.953403, 1.62417, 0)
+mesh = SubResource("CylinderMesh_md55e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(0.636428, 0.771336, 0, -0.771336, 0.636428, 0, 0, 0, 1, -1.06876, 1.62417, 0)
+mesh = SubResource("CylinderMesh_md55e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(-0.0270048, 0.999498, 0.0165662, -0.971195, -0.0223079, -0.23724, -0.236752, -0.0224958, 0.97131, 0, 2.88307, 0.60498)
+mesh = SubResource("RibbonTrailMesh_pap81")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, -0.0206982, 0.999786, 0, -0.999786, -0.0206982, 0.405889, -1.36188, 0.415328)
+mesh = SubResource("CapsuleMesh_ayax6")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, -0.0206982, 0.999786, 0, -0.999786, -0.0206982, -0.453086, -1.36188, 0.415328)
+mesh = SubResource("CapsuleMesh_ayax6")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62495, 0.961098, 0)
+mesh = SubResource("SphereMesh_2niqd")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Placer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82253, 0.985376, 0)
+mesh = SubResource("SphereMesh_2niqd")
+skeleton = NodePath("../..")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnoiv38qurdgy"]
+
+[ext_resource type="Material" uid="uid://bdeq30xo27jn1" path="res://Materials/Asphalt.material" id="1_jhcnc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xc4xc"]
+material = ExtResource("1_jhcnc")
+size = Vector3(0.245, 0.245, 1.61)
+
+[node name="Stairs" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109294, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109294, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.234114, 0.326975, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.464265, 0.555168, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.697172, 0.788075, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922608, 1.00488, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15609, 1.23308, 0)
+mesh = SubResource("BoxMesh_xc4xc")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3927, 1.45499, 0)
+mesh = SubResource("BoxMesh_xc4xc")

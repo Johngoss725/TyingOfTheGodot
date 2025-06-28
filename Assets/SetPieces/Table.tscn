@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ychfgq1xje5v"]
+
+[ext_resource type="Material" uid="uid://cbpet5mo28qee" path="res://Materials/Wood.material" id="1_wxvl3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cn4pw"]
+material = ExtResource("1_wxvl3")
+size = Vector3(3, 0.25, 1.915)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_51t8v"]
+material = ExtResource("1_wxvl3")
+top_radius = 0.19
+bottom_radius = 0.065
+height = 1.03
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08358, -0.0270735)
+mesh = SubResource("BoxMesh_cn4pw")
+
+[node name="TableLeg" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01638, 0.512391, 0.621589)
+mesh = SubResource("CylinderMesh_51t8v")
+
+[node name="TableLeg2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995084, 0.512391, 0.621589)
+mesh = SubResource("CylinderMesh_51t8v")
+
+[node name="TableLeg3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01638, 0.512391, -0.725095)
+mesh = SubResource("CylinderMesh_51t8v")
+
+[node name="TableLeg4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995084, 0.512391, -0.725095)
+mesh = SubResource("CylinderMesh_51t8v")

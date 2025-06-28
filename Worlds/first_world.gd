@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var speed = 0.05
+@export var speed = 0.01
 
 @onready var player_cart=$PlayerPath/PlayerCart
 
