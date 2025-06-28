@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8hnsuonmmqh5"]
+
+[ext_resource type="Script" uid="uid://bkpvghyj4730s" path="res://Worlds/game_over.gd" id="1_68om8"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_68om8")
+
+[node name="MainLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 91.0
+offset_right = 751.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 116
+text = "Game over "
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 266.0
+offset_right = 719.0
+offset_bottom = 556.0
+theme_override_font_sizes/font_size = 206
+text = "exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -780,6 +780,20 @@ tracks/13/keys = {
 "update": 0,
 "values": [Vector3(0.0255691, 0, 0), Vector3(0.0255691, 0, 0)]
 }
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.26667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"smack_player"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ncf7h"]
 _data = {

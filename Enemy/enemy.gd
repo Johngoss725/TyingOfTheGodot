@@ -54,6 +54,7 @@ func _process(delta: float) -> void:
 				get_tree().call_group("player", "finish_attack")
 				anim_player.play("Die")
 
+
 func _ready() -> void:
 	add_to_group("enemy")
 	$EnemysBoard/Sprite3D.visible=false
@@ -66,6 +67,10 @@ func _ready() -> void:
 #subrtactificate from the two words basically 
 func update_word(word):
 	$EnemysBoard/SubViewport/RichTextLabel.text=word
+
+func smack_player():
+	get_tree().call_group("player", "take_damage")
+
 
 func _on_attack_area_entered(area: Area3D) -> void:
 	print("hitting the area!!!!!!!!!!!!!")

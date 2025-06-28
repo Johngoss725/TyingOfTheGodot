@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://pihrwjmka60b"]
+[gd_scene load_steps=40 format=3 uid="uid://pihrwjmka60b"]
 
 [ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
 [ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
 [ext_resource type="Shader" uid="uid://bw3nudqetgnig" path="res://Shaders/BrickGptA.gdshader" id="2_37wnl"]
 [ext_resource type="Material" uid="uid://bdeq30xo27jn1" path="res://Materials/Asphalt.material" id="2_lhx7d"]
+[ext_resource type="PackedScene" uid="uid://ctse5jscksh37" path="res://Assets/Player/PlayerMeshes.tscn" id="2_qd2iy"]
 [ext_resource type="PackedScene" uid="uid://xng8843dw2w3" path="res://Assets/SetPieces/TrashCan.tscn" id="5_c3ijb"]
 [ext_resource type="PackedScene" uid="uid://boyg3wtx3ryxx" path="res://Assets/SetPieces/body.tscn" id="6_1ahrg"]
 [ext_resource type="PackedScene" uid="uid://d3se8yqgo4vks" path="res://Assets/SetPieces/lampost.tscn" id="7_2u5r2"]
@@ -17,7 +18,118 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Gradient" id="Gradient_k4jf7"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 0.227451)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qd2iy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3qctl"]
+seamless = true
+color_ramp = SubResource("Gradient_k4jf7")
+noise = SubResource("FastNoiseLite_qd2iy")
+
+[sub_resource type="Animation" id="Animation_k4jf7"]
+resource_name = "FlashOverlay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BloodOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.52, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qd2iy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BloodOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qctl"]
+_data = {
+&"FlashOverlay": SubResource("Animation_k4jf7"),
+&"RESET": SubResource("Animation_qd2iy")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jivs5"]
+
+[sub_resource type="Animation" id="Animation_3qctl"]
+resource_name = "scan"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SecondaryCam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.00825, 4.03243, 5.93333, 7.56667, 10.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.731347, 0.130837, -0.0487906), Vector3(-0.295088, 0.114608, -0.0165213), Vector3(-0.184886, 0.315308, -0.0101649), Vector3(-0.184886, 0.315308, -0.0101649), Vector3(-0.295088, 0.114608, -0.0165213), Vector3(-0.731347, 0.130837, -0.0487906)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SecondaryCam:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.00825, 4.03243, 5.93333, 7.56667, 10.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.35531, 4.40307, 1.57636), Vector3(0.425289, 3.56522, 2.78457), Vector3(1.53487, 1.98261, 0.948533), Vector3(1.53487, 1.98261, 0.948533), Vector3(0.425289, 3.56522, 2.78457), Vector3(0.35531, 4.40307, 1.57636)]
+}
+
+[sub_resource type="Animation" id="Animation_5ej7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SecondaryCam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.731347, 0.130837, -0.0487906)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SecondaryCam:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.425289, 3.56522, 2.78457)]
+}
+
+[sub_resource type="Animation" id="Animation_buwvj"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42xel"]
+_data = {
+&"RESET": SubResource("Animation_5ej7r"),
+&"new_animation": SubResource("Animation_buwvj"),
+&"scan": SubResource("Animation_3qctl")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2of45"]
 albedo_color = Color(0.104833, 0.0655813, 1.20327e-08, 1)
@@ -114,6 +226,48 @@ loop = false
 [node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.156, 0)
 
+[node name="Control" type="Control" parent="PlayerPath/PlayerCart/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartHolder" type="Control" parent="PlayerPath/PlayerCart/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -153.0
+offset_right = 261.0
+offset_bottom = -58.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerPath/PlayerCart/Camera3D/Control/HeartHolder"]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerPath/PlayerCart/Camera3D/Control/HeartHolder/HBoxContainer"]
+layout_mode = 2
+
+[node name="BloodOverlay" type="TextureRect" parent="PlayerPath/PlayerCart/Camera3D/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_3qctl")
+
+[node name="UIAnimPlayer" type="AnimationPlayer" parent="PlayerPath/PlayerCart/Camera3D/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_3qctl")
+}
+
 [node name="PlayerArea" type="Area3D" parent="PlayerPath/PlayerCart" groups=["player_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.959562, 0)
 
@@ -126,6 +280,18 @@ light_color = Color(1, 1, 0.564706, 1)
 light_energy = 16.0
 
 [node name="EnemyMoveTo" type="Node3D" parent="PlayerPath/PlayerCart" groups=["player_cart"]]
+
+[node name="Node3D" parent="PlayerPath/PlayerCart" instance=ExtResource("2_qd2iy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="SecondaryCam" type="Camera3D" parent="PlayerPath/PlayerCart"]
+transform = Transform3D(0.994527, -0.0386751, 0.0971014, -0.0362994, 0.74339, 0.667875, -0.0980144, -0.667739, 0.737917, 0.425289, 3.56522, 2.78457)
+current = true
+
+[node name="CamAnims" type="AnimationPlayer" parent="PlayerPath/PlayerCart"]
+libraries = {
+&"": SubResource("AnimationLibrary_42xel")
+}
 
 [node name="Road" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.5502)
@@ -460,3 +626,4 @@ transform = Transform3D(0.820022, 0, -0.572332, 0, 1, 0, 0.572332, 0, 0.820022, 
 transform = Transform3D(-0.838271, 0, -0.545254, 0, 1, 0, 0.545254, 0, -0.838271, -8.19261, 13.6796, -16.3074)
 
 [connection signal="area_entered" from="PlayerPath/PlayerCart/PlayerArea" to="." method="_on_player_area_area_entered"]
+[connection signal="animation_finished" from="PlayerPath/PlayerCart/CamAnims" to="." method="_on_cam_anims_animation_finished"]
