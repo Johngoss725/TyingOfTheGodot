@@ -6,6 +6,14 @@ extends Node3D
 
 func _ready() -> void:
 	add_to_group("player")
+	for i in range(health):
+		var textureRect = TextureRect.new()
+		#var  textureRect = use_textureRect.instantiate()
+		textureRect.texture=load("res://UI_Images/myimag.png")
+		textureRect.set_expand_mode(TextureRect.ExpandMode.EXPAND_IGNORE_SIZE)
+
+		textureRect.custom_minimum_size = Vector2(40,40)
+		$PlayerPath/PlayerCart/Camera3D/Control/HeartHolder/HBoxContainer.add_child(textureRect)
 
 @onready var dead=false
 @onready var prev_state=""
@@ -19,9 +27,12 @@ func _process(delta: float) -> void:
 	match curr_state:
 		"advance":
 			player_cart.progress_ratio+=delta*speed
+			$PlayerPath/PlayerCart/Camera3D.rotation_degrees.y = 0
 			
 		"engage":
-			pass
+			if curr_state!=prev_state:
+				$PlayerPath/PlayerCart/Look_At.look_at(current_enemy.global_transform.origin, Vector3.UP)
+				$PlayerPath/PlayerCart/Camera3D.rotation.y = $PlayerPath/PlayerCart/Look_At.rotation.y
 			
 		"hurt":
 			if curr_state!=prev_state:
@@ -39,8 +50,9 @@ func _process(delta: float) -> void:
 				for i in range(health):
 					var textureRect = TextureRect.new()
 					#var  textureRect = use_textureRect.instantiate()
-					textureRect.texture=load("res://icon.svg")
+					textureRect.texture=load("res://UI_Images/myimag.png")
 					textureRect.custom_minimum_size = Vector2(40,40)
+					textureRect.set_expand_mode(TextureRect.ExpandMode.EXPAND_IGNORE_SIZE)
 					$PlayerPath/PlayerCart/Camera3D/Control/HeartHolder/HBoxContainer.add_child(textureRect)
 				next_state="engage"
 
@@ -64,12 +76,13 @@ func take_damage():
 
 	
 
-
+@onready var current_enemy=null
 func _on_player_area_area_entered(area: Area3D) -> void:
 	if area.owner.is_in_group("enemy"):
 		if area.owner.dead==false:
 			area.owner.next_state="Walk_to"
 		next_state="engage"
+		current_enemy=area.owner
 
 
 func _on_cam_anims_animation_finished(anim_name: StringName) -> void:

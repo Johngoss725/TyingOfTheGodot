@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs76shpr60js6"]
+
+[ext_resource type="Material" uid="uid://u8rrrmg56ebq" path="res://Materials/MetalGrey.material" id="1_kv0wl"]
+
+[sub_resource type="Gradient" id="Gradient_ja3r1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g76y4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jsulu"]
+seamless = true
+color_ramp = SubResource("Gradient_ja3r1")
+noise = SubResource("FastNoiseLite_g76y4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qf4e"]
+albedo_color = Color(0.407731, 0.407731, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_jsulu")
+metallic = 0.67
+
+[sub_resource type="TorusMesh" id="TorusMesh_8omeu"]
+material = SubResource("StandardMaterial3D_8qf4e")
+inner_radius = 0.797
+
+[sub_resource type="BoxMesh" id="BoxMesh_arpwi"]
+material = ExtResource("1_kv0wl")
+size = Vector3(1.64, 0.51, 1.64)
+
+[sub_resource type="Gradient" id="Gradient_kv0wl"]
+offsets = PackedFloat32Array(0, 0.204878, 0.512195, 1)
+colors = PackedColorArray(0.570499, 0, 0.0727423, 1, 0.860457, 0.538442, 7.70092e-07, 1, 0.96366, 0.706661, 1.92523e-06, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ja3r1"]
+gradient = SubResource("Gradient_kv0wl")
+
+[sub_resource type="Curve" id="Curve_kv0wl"]
+_data = [Vector2(0, 0.640449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsulu"]
+curve = SubResource("Curve_kv0wl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kv0wl"]
+emission_shape_scale = Vector3(0.25, 0.25, 0.25)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 39.8, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 14.87
+tangential_accel_min = -2.97
+tangential_accel_max = -2.97
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_jsulu")
+color_ramp = SubResource("GradientTexture1D_ja3r1")
+turbulence_influence_min = 0.404
+turbulence_influence_max = 0.404
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ja3r1"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.0980392)
+emission_enabled = true
+emission = Color(0.658924, 0.255274, 0.0863535, 1)
+emission_energy_multiplier = 1.24
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_g76y4"]
+material = SubResource("StandardMaterial3D_ja3r1")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1.27467, 0)
+mesh = SubResource("TorusMesh_8omeu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23765, 0)
+mesh = SubResource("BoxMesh_arpwi")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0409, 0)
+amount = 100
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_kv0wl")
+draw_pass_1 = SubResource("QuadMesh_g76y4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36003, 0)
+light_color = Color(1, 0.960784, 0, 1)
+light_energy = 16.0
+omni_range = 3.12514
