@@ -1,0 +1,25 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=4 format=3 uid="uid://gknpfdh5r1kh"]
+
+[ext_resource type="Texture2D" uid="uid://bbivn3fi8drsu" path="res://ProcessMaterials/BlueGradient.tres" id="1_hgvxs"]
+
+[sub_resource type="Curve" id="Curve_kv0wl"]
+_data = [Vector2(0, 0.123596), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsulu"]
+curve = SubResource("Curve_kv0wl")
+
+[resource]
+emission_shape_scale = Vector3(0.25, 0.25, 0.25)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 39.8, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 14.87
+tangential_accel_min = -2.97
+tangential_accel_max = -2.97
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_jsulu")
+color_ramp = ExtResource("1_hgvxs")
+turbulence_influence_min = 0.404
+turbulence_influence_max = 0.404

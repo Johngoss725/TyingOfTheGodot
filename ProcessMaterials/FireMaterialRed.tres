@@ -1,0 +1,30 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://8066eunix3rw"]
+
+[sub_resource type="Gradient" id="Gradient_kv0wl"]
+offsets = PackedFloat32Array(0, 0.204878, 0.512195, 1)
+colors = PackedColorArray(0.570499, 0, 0.0727423, 1, 0.860457, 0.538442, 7.70092e-07, 1, 0.96366, 0.706661, 1.92523e-06, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ja3r1"]
+gradient = SubResource("Gradient_kv0wl")
+
+[sub_resource type="Curve" id="Curve_kv0wl"]
+_data = [Vector2(0, 0.640449), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsulu"]
+curve = SubResource("Curve_kv0wl")
+
+[resource]
+emission_shape_scale = Vector3(0.25, 0.25, 0.25)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 39.8, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 14.87
+tangential_accel_min = -2.97
+tangential_accel_max = -2.97
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_jsulu")
+color_ramp = SubResource("GradientTexture1D_ja3r1")
+turbulence_influence_min = 0.404
+turbulence_influence_max = 0.404

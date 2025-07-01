@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4dkx36d8vsvl"]
+
+[ext_resource type="Script" uid="uid://bmrxervtxwa83" path="res://Assets/Boss/boss_fireball.gd" id="1_5vfib"]
+[ext_resource type="Material" uid="uid://gknpfdh5r1kh" path="res://ProcessMaterials/BlueProcessMaterial.tres" id="1_o1wvs"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5vfib"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yan31"]
+seamless = true
+noise = SubResource("FastNoiseLite_5vfib")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xbgm"]
+transparency = 1
+albedo_color = Color(0, 0.215686, 0.913725, 0.466667)
+albedo_texture = SubResource("NoiseTexture2D_yan31")
+emission_enabled = true
+emission = Color(0, 0.550863, 0.885964, 1)
+emission_energy_multiplier = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_o1wvs"]
+material = SubResource("StandardMaterial3D_0xbgm")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Gradient" id="Gradient_76p54"]
+colors = PackedColorArray(0, 0, 0, 0.137255, 0.992157, 0.992157, 0.992157, 0.231373)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o1wvs"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vfib"]
+seamless = true
+color_ramp = SubResource("Gradient_76p54")
+noise = SubResource("FastNoiseLite_o1wvs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vfib"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("NoiseTexture2D_5vfib")
+emission_energy_multiplier = 0.27
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yan31"]
+material = SubResource("StandardMaterial3D_5vfib")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5vfib"]
+radius = 0.866711
+
+[node name="Fireball" type="Node3D"]
+script = ExtResource("1_5vfib")
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_o1wvs")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 45
+process_material = ExtResource("1_o1wvs")
+draw_pass_1 = SubResource("QuadMesh_yan31")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00878906)
+light_color = Color(0.463102, 0.562848, 1, 1)
+light_energy = 16.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_5vfib")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

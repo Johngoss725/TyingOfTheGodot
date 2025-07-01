@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://pihrwjmka60b"]
+[gd_scene load_steps=85 format=3 uid="uid://pihrwjmka60b"]
 
 [ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
 [ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://cbpet5mo28qee" path="res://Materials/Wood.material" id="13_buwvj"]
 [ext_resource type="Material" uid="uid://bhddvdgyieyhu" path="res://Materials/CastleGrounds.material" id="13_cqb8u"]
 [ext_resource type="PackedScene" uid="uid://cs76shpr60js6" path="res://Assets/SetPieces/FlamingTorus.tscn" id="16_ekhpj"]
+[ext_resource type="PackedScene" uid="uid://d26i75isxisbd" path="res://Assets/Boss/Boss.tscn" id="17_yr04i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37wnl"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -359,6 +360,21 @@ albedo_texture = SubResource("NoiseTexture2D_yr04i")
 material = SubResource("StandardMaterial3D_506sp")
 size = Vector3(75, 1, 120)
 
+[sub_resource type="Animation" id="Animation_swhe5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:material:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_xrene"]
 resource_name = "WaterMoving"
 length = 10.0
@@ -374,21 +390,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(1, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_swhe5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:mesh:material:uv1_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jwksg"]
@@ -428,7 +429,8 @@ light_energy = 0.25
 curve = SubResource("Curve3D_vvisa")
 
 [node name="PlayerCart" type="PathFollow3D" parent="PlayerPath"]
-transform = Transform3D(0.998319, 0, -0.0578221, 0, 0.999998, 0, 0.0578221, 0, 0.998319, -0.263565, 0, 0.0833736)
+transform = Transform3D(0.218203, 0.0011183, 0.975894, -0.00512488, 0.999985, -2.72869e-10, -0.975881, -0.00500142, 0.218206, -216.885, 0.359497, -181.876)
+progress = 328.952
 loop = false
 
 [node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
@@ -494,7 +496,7 @@ light_energy = 16.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="SecondaryCam" type="Camera3D" parent="PlayerPath/PlayerCart"]
-transform = Transform3D(0.994527, -0.0386753, 0.0971016, -0.0362994, 0.743389, 0.667876, -0.0980146, -0.667739, 0.737918, 0.425289, 3.56522, 2.78457)
+transform = Transform3D(0.994527, -0.0386753, 0.0971017, -0.0362994, 0.743389, 0.667876, -0.0980146, -0.667739, 0.737918, 0.425289, 3.56522, 2.78457)
 
 [node name="CamAnims" type="AnimationPlayer" parent="PlayerPath/PlayerCart"]
 libraries = {
@@ -1681,6 +1683,9 @@ skeleton = NodePath("../..")
 
 [node name="Node3D" parent="." instance=ExtResource("16_ekhpj")]
 transform = Transform3D(4.78017, 0, 8.7835, 0, 10, 0, -8.7835, 0, 4.78017, -140.905, 1.90735e-06, -182.009)
+
+[node name="Node3D2" parent="." instance=ExtResource("17_yr04i")]
+transform = Transform3D(0.386292, 0, 0.922376, 0, 1, 0, -0.922376, 0, 0.386292, -253.346, 11.6187, -194.627)
 
 [connection signal="area_entered" from="PlayerPath/PlayerCart/PlayerArea" to="." method="_on_player_area_area_entered"]
 [connection signal="animation_finished" from="PlayerPath/PlayerCart/CamAnims" to="." method="_on_cam_anims_animation_finished"]

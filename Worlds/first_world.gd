@@ -31,9 +31,12 @@ func _process(delta: float) -> void:
 			
 		"engage":
 			if curr_state!=prev_state:
-				$PlayerPath/PlayerCart/Look_At.look_at(current_enemy.global_transform.origin, Vector3.UP)
-				$PlayerPath/PlayerCart/Camera3D.rotation.y = $PlayerPath/PlayerCart/Look_At.rotation.y
-			
+				if current_enemy!=null:
+					$PlayerPath/PlayerCart/Look_At.look_at(current_enemy.global_transform.origin, Vector3.UP)
+					$PlayerPath/PlayerCart/Camera3D.rotation.y = $PlayerPath/PlayerCart/Look_At.rotation.y
+				#fix this eventually
+				else:
+					pass
 		"hurt":
 			if curr_state!=prev_state:
 
