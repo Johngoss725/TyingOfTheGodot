@@ -1,6 +1,5 @@
 extends Node3D
 
-@export var ratio = 0.12
 
 @onready var rand= RandomNumberGenerator.new()
 
@@ -42,7 +41,7 @@ enum Difficulty { EASY, MEDIUM, HARD }
 
 @onready var phrase=""
 
-@onready var anim_player=$ZombiAnim
+@onready var anim_player=$WormAnims
 @onready var prev_state=""
 @onready var next_state="Idle"
 @onready var curr_state=""
@@ -55,20 +54,21 @@ func _process(delta: float) -> void:
 	match curr_state:
 		"Idle":
 			if curr_state!=prev_state:
-				$ZombiAnim.play("Walk")
+				$WormAnims.play("Idle")
 
 		"Walk_to":
 			if curr_state!=prev_state:
-				$DetectionArea/CollisionShape3D.disabled=true
-				print("enemy in attack formation")
+				$detectionArea/CollisionShape3D2.disabled=true
+				print("WORM in attack formation")
 				add_to_group("active_enemy")
 				$EnemysBoard.visible=true
 				get_tree().call_group("player", "engage_attack")
-				anim_player.play("Walk")
+				anim_player.play("prepareAttack")
 				KeyboardManger.initiate_attack(self,phrase)
 
 			var player = get_tree().get_first_node_in_group("player_cart")
-			var direction = global_transform.origin.move_toward(player.global_transform.origin, 0.4 * delta)
+			print(player.global_transform.origin)
+			var direction = global_transform.origin.move_toward(Vector3(player.global_transform.origin.x,0,player.global_transform.origin.y), 0.4 * delta)
 			global_transform.origin = direction
 			
 		"Attack":
@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 			if curr_state!=prev_state:
 				dead=true
 				$EnemysBoard.visible=false
-				$attack/CollisionShape3D.disabled=true
+				$Attackarea/CollisionShape3D.disabled=true
 				print("entering death state")
 				remove_from_group("active_enemy")
 				get_tree().call_group("player", "finish_attack")
@@ -121,14 +121,17 @@ func smack_player():
 	get_tree().call_group("player", "take_damage")
 
 
-func _on_attack_area_entered(area: Area3D) -> void:
-	print("hitting the area!!!!!!!!!!!!!")
-	if dead==false:
-		if area.is_in_group("player_area"):
-			print("gettting here")
-			next_state="Attack"
+
 
 func _on_detection_area_area_entered(area: Area3D) -> void:
 	if dead==false:
 		if area.is_in_group("player_area"):
 			next_state="Walk_to"
+
+
+func _on_attackarea_area_entered(area: Area3D) -> void:
+	print("hitting the area!!!!!!!!!!!!!")
+	if dead==false:
+		if area.is_in_group("player_area"):
+			print("gettting here")
+			next_state="Attack"

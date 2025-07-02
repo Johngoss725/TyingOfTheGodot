@@ -32,15 +32,15 @@ material = ExtResource("4_eqilm")
 inner_radius = 0.088
 outer_radius = 0.196
 
-[sub_resource type="Gradient" id="Gradient_2pb1h"]
+[sub_resource type="Gradient" id="Gradient_m6jha"]
 colors = PackedColorArray(0, 0, 0, 1, 0.170653, 0.020312, 0.0749461, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_px1sc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_glvfu"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_am0pq"]
 height = 325
-color_ramp = SubResource("Gradient_2pb1h")
-noise = SubResource("FastNoiseLite_px1sc")
+color_ramp = SubResource("Gradient_m6jha")
+noise = SubResource("FastNoiseLite_glvfu")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2pb1h"]
 viewport_path = NodePath("EnemysBoard/SubViewport")

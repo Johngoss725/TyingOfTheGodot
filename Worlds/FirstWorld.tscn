@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://pihrwjmka60b"]
+[gd_scene load_steps=86 format=3 uid="uid://pihrwjmka60b"]
 
 [ext_resource type="PackedScene" uid="uid://dh7driskg67n7" path="res://Enemy/enemy.tscn" id="1_2of45"]
 [ext_resource type="Script" uid="uid://c7sx0sjyohmnx" path="res://Worlds/first_world.gd" id="1_jivs5"]
@@ -17,6 +17,7 @@
 [ext_resource type="Material" uid="uid://bhddvdgyieyhu" path="res://Materials/CastleGrounds.material" id="13_cqb8u"]
 [ext_resource type="PackedScene" uid="uid://cs76shpr60js6" path="res://Assets/SetPieces/FlamingTorus.tscn" id="16_ekhpj"]
 [ext_resource type="PackedScene" uid="uid://d26i75isxisbd" path="res://Assets/Boss/Boss.tscn" id="17_yr04i"]
+[ext_resource type="PackedScene" uid="uid://cfsy8g730t7u" path="res://Assets/Seaworm/Seaworm.tscn" id="18_506sp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37wnl"]
 sky_top_color = Color(0.165271, 0.204685, 0.259496, 1)
@@ -429,8 +430,7 @@ light_energy = 0.25
 curve = SubResource("Curve3D_vvisa")
 
 [node name="PlayerCart" type="PathFollow3D" parent="PlayerPath"]
-transform = Transform3D(0.218203, 0.0011183, 0.975894, -0.00512488, 0.999985, -2.72869e-10, -0.975881, -0.00500142, 0.218206, -216.885, 0.359497, -181.876)
-progress = 328.952
+transform = Transform3D(0.998318, 0, -0.057822, 0, 0.999998, 0, 0.057822, 0, 0.998317, -0.263565, 0, 0.0833736)
 loop = false
 
 [node name="Camera3D" type="Camera3D" parent="PlayerPath/PlayerCart"]
@@ -1686,6 +1686,9 @@ transform = Transform3D(4.78017, 0, 8.7835, 0, 10, 0, -8.7835, 0, 4.78017, -140.
 
 [node name="Node3D2" parent="." instance=ExtResource("17_yr04i")]
 transform = Transform3D(0.386292, 0, 0.922376, 0, 1, 0, -0.922376, 0, 0.386292, -253.346, 11.6187, -194.627)
+
+[node name="Seaworm" parent="." instance=ExtResource("18_506sp")]
+transform = Transform3D(-0.429708, 0, -0.902968, 0, 1, 0, 0.902968, 0, -0.429708, -106.309, -7.73103, -66.6104)
 
 [connection signal="area_entered" from="PlayerPath/PlayerCart/PlayerArea" to="." method="_on_player_area_area_entered"]
 [connection signal="animation_finished" from="PlayerPath/PlayerCart/CamAnims" to="." method="_on_cam_anims_animation_finished"]
